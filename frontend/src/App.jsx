@@ -4,16 +4,16 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Googlelogin from "./Googlelogin";
-import Dashboard from "./dashboard";
+import Dashboard from "./Dashboard";
 import Notfound from "./Notfound";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Refreshhandler from "./Refreshhandler";
 
 function App() {
-  const [isAuthenticated, setAuthenticated] = useState(false);
+    const [isAuthenticated, setAuthenticated] = useState(false);
   const GoogleAuthWrapper = () => {
     return (
-      <GoogleOAuthProvider clientId="30665335422-vvt87a05ii0cn9fchlprjn9rljgurr7c.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId="972235488284-nuuuld2gesg2182eq4sv24pk86tf54i1.apps.googleusercontent.com">
         <Googlelogin />
       </GoogleOAuthProvider>
     );

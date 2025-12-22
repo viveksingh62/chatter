@@ -5,8 +5,12 @@ require('dotenv').config()
 const PORT = process.env.PORT || 8080;
 require("./models/dbConnection")
 const cors  = require("cors")
-app.use(cors())
-
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 app.get("/",(req,res)=>{
    res.send("server is running ")
 })

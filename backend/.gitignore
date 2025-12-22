@@ -16,3 +16,11 @@ yarn-error.log*
 # Build outputs
 dist/
 build/
+# Environment variables
+.env
+
+# Google OAuth credentials
+config/client_secret*.json
+
+# (optional) ignore all json in config
+# config/*.json

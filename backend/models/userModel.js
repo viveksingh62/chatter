@@ -12,5 +12,5 @@ const UserSchema = new Schema({
         type:String
     }
 })
-const UserModel = mongoose.model('social-logins',UserSchema)
+const UserModel = mongoose.model('boom',UserSchema)
 module.exports=UserModel;

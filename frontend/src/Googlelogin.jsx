@@ -4,7 +4,7 @@ import { googleAuth } from "./api";
 import { useNavigate } from "react-router-dom";
 function Googlelogin() {
   const navigate = useNavigate();
-  const responegoogle = async (authResult) => {
+  const responeGoogle = async (authResult) => {
     try {
       if (authResult["code"]) {
         const result = await googleAuth(authResult["code"]);
@@ -18,14 +18,14 @@ function Googlelogin() {
         navigate("/dashboard");
       }
       console.log(authResult);
-    } catch (err) {
-      console.log("Error while requestion google code : " + err);
+    } catch (error) {
+      console.log("Error while requestion google code : " + error);
     }
   };
 
   const googlelogin = useGoogleLogin({
-    onSuccess: responegoogle,
-    onError: responegoogle,
+    onSuccess: responeGoogle,
+    onError: responeGoogle,
     flow: "auth-code",
   });
   return (

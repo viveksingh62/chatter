@@ -16,7 +16,7 @@ const googlelogin = async (req, res) => {
       user = await UserModel.create({
         name,
         email,
-       image:picture,
+        image: picture,
       });
     }
     const { _id } = user;
@@ -29,11 +29,10 @@ const googlelogin = async (req, res) => {
       user,
     });
   } catch (error) {
-    console.log("Google login error:", error.response?.data || error)
+    console.log("Google login error:", error.response?.data || error);
     res.status(500).json({
-        
-        message:"Internal server erro"
-    })
+      message: "Internal server erro",
+    });
   }
 };
 
