@@ -1,21 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
-import { googleAuth } from "./api";
+import { googleAuth } from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
 function Googlelogin() {
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const responeGoogle = async (authResult) => {
     try {
       if (authResult["code"]) {
         const result = await googleAuth(authResult["code"]);
-        const { name, email, image } = result.data.user;
-        const token = result.data.token;
-        const obj = { name, email, image, token };
+        // const { name, email, image } = result.data.user;
+        // const token = result.data.token;
+        login(result.data);
+        // const obj = { name, email, image, token };
 
-        localStorage.setItem("user-info", JSON.stringify(obj));
+        localStorage.setItem("user-info", JSON.stringify(result.data));
         console.log(token);
         console.log(result.data.user);
-        navigate("/dashboard");
+        // navigate("/dashboard");
       }
       console.log(authResult);
     } catch (error) {

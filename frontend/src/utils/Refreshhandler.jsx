@@ -10,7 +10,7 @@ function Refreshhandler({ setAuthenticated }) {
     if (token) {
       setAuthenticated(true);
       if (location.pathname == "/" || location.pathname == "/login") {
-        navigate("/dashboard", { replace: false });
+        navigate("/chatpage", { replace: false });
       }
     }
   }, [location, navigate, setAuthenticated]);
