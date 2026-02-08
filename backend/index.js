@@ -48,7 +48,7 @@ io.use((socket, next) => {
   }
 });
 
-app.use(express.json()); 
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/user", userRouter);
 app.use("/auth", authRouter);
@@ -63,21 +63,26 @@ io.on("connection", async (socket) => {
     return;
   }
   await redisClient.set(`online:${userId}`, socket.id);
-const interval = setInterval(async () => {
-  await redisClient.expire(`online:${userId}`, 60);
-}, 30000);
+  const interval = setInterval(async () => {
+    await redisClient.expire(`online:${userId}`, 60);
+  }, 30000);
 
-socket.on("disconnect", () => {
-  clearInterval(interval);
-});
+  socket.broadcast.emit("user-online", userId);
 
-
-  io.emit("user-online", userId);
-  console.log(`User ${userId} is ONLINE`);
   console.log("SOCKET CONNECTED");
-  console.log("User ID:", socket.userId);
-  console.log("Socket ID:", socket.id);
-  
+    socket.on("typing", ({ conversationId }) => {
+    console.log("typing from", socket.userId);
+    socket.to(conversationId).emit("user-typing", {
+      userId: socket.userId,
+    });
+  });
+
+  socket.on("stop-typing", ({ conversationId }) => {
+    socket.to(conversationId).emit("user-stop-typing", {
+      userId: socket.userId,
+    });
+  });
+
   socket.on("message", async ({ text, conversationId }) => {
     const senderId = socket.userId;
     console.log({ conversationId, text, senderId });
@@ -127,11 +132,17 @@ socket.on("disconnect", () => {
     socket.join(conversationId);
     console.log(`user join the ${conversationId}`);
   });
+  socket.on("leave-room", (conversationId) => {
+    socket.leave(conversationId);
+    console.log("left room", conversationId);
+  });
+
   socket.on("disconnect", async () => {
+    clearInterval(interval);
     console.log("user disconnected", socket.id);
     await redisClient.del(`online:${userId}`);
-     console.log(`User ${userId} is OFFLINE`);
-         io.emit("user-offline", userId);
+    console.log(`User ${userId} is OFFLINE`);
+    socket.broadcast.emit("user-offline", userId);
   });
 });
 
