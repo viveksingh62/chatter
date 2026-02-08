@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sidebar = ({ users, onSelect }) => {
+const Sidebar = ({ users, onSelect,onlineUsers }) => {
   return (
     <div className="w-screen md:w-72 bg-gradient-to-b from-sky-700 to-sky-900 text-white h-screen flex flex-col">
 

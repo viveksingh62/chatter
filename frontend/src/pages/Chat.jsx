@@ -1,12 +1,16 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import api from "../utils/api";
-import socket from "../pages/Socket";
+// import socket from "../pages/Socket";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { SocketContext } from "../context/socketContext";
 
 function Chat({ conversationId }) {
     const navigate = useNavigate();
+    const  socket  = useContext(SocketContext);
+if (!socket) return null;
+
   const [message, setMessage] = useState("");
   const { user } = useContext(AuthContext);
   const [messages, setMessages] = useState([]);
@@ -68,7 +72,7 @@ function Chat({ conversationId }) {
     socket.emit("message", {
       text: message,
       conversationId,
-      senderId: user._id,
+      // senderId: user._id,
     });
 
     setMessage("");
