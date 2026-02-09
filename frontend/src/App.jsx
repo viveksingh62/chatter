@@ -12,12 +12,14 @@ import Settings from "./pages/Settings";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function PrivateRoute({ children }) {
-  const { user } = useContext(AuthContext);
-
+  const { user,loading } = useContext(AuthContext);
+  if (loading) {
+    return <div className="text-center mt-10">Loading...</div>;
+  }
   // While AuthContext is restoring user from localStorage
-  if (user === null) return null;
+  ;
 
-  return user ? children : <Navigate to="/login" />;
+  return user ? children : <Navigate to="/login" replace />;
 }
 
 function App() {
