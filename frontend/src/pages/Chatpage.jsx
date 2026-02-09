@@ -4,7 +4,7 @@ import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Chat from "./Chat";
-import { SocketContext } from "../context/SocketContext";
+import { SocketContext } from "../context/socketContext";
 
 const Chatpage = () => {
   const navigate = useNavigate();
