@@ -65,10 +65,10 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
     credentials: true,
   },
-  transports: ["websocket"], // 👈 avoid polling CORS issues
+  transports: ["websocket"], //  avoid polling CORS issues
 });
 
-// ✅ SOCKET AUTH
+//  SOCKET AUTH
 io.use((socket, next) => {
   const token = socket.handshake.auth?.token;
   if (!token) return next(new Error("No token"));
@@ -82,10 +82,9 @@ io.use((socket, next) => {
   }
 });
 
-// ❌ REMOVE initial_headers COMPLETELY
-// ❌ DO NOT MANUALLY SET ACCESS-CONTROL HEADERS FOR SOCKET.IO
 
-// ✅ SOCKET EVENTS
+
+//  SOCKET EVENTS
 io.on("connection", async (socket) => {
   console.log("User connected:", socket.id);
 
@@ -157,6 +156,12 @@ io.on("connection", async (socket) => {
           targetLang,
           sourceLang
         );
+        console.log("TRANSLATE REQUEST:", {
+  text,
+  sourceLang,
+  targetLang,
+});
+
 
         newMessage.textTranslated = translated;
         newMessage.status = "translated";
