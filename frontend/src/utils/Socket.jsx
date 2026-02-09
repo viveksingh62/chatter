@@ -6,7 +6,7 @@ export const createSocket = (token) => {
       token,
     },
     withCredentials: true,
-    transports: ["polling", "websocket"],
+    transports: [ "websocket"],
     autoConnect: false,
   });
 };
