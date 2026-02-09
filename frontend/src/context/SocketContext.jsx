@@ -12,7 +12,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (!user?.token) return;
-  console.log("🔑 Sending token:", user.token);
+  console.log(" Sending token:", user.token);
     const newSocket = createSocket(user.token);
     newSocket.connect();
     setSocket(newSocket);
