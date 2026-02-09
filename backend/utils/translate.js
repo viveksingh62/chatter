@@ -1,27 +1,36 @@
 const axios = require("axios");
 
-async function translateText(text, targetLang,sourceLang) {
+async function translateText(text, targetLang, sourceLang) {
   try {
-   const response = await axios.get(
+    const response = await axios.get(
       "https://api.mymemory.translated.net/get",
       {
         params: {
           q: text,
           langpair: `${sourceLang}|${targetLang}`,
-             de: "easyvivek3@example.com", 
+          de: "easyvivek3@example.com",
         },
-        timeout: 5000 // Add timeout
+        headers: {
+          "User-Agent": "VocaChat/1.0",
+        },
+        timeout: 8000,
       }
     );
-        const translated = response.data.responseData.translatedText;
+
+    const translated =
+      response.data?.responseData?.translatedText;
+
+    // ❌ Translation failed
     if (!translated || translated === "INVALID LANGUAGE PAIR") {
-      console.log("Invalid language pair:", sourceLang, "->", targetLang);
-      return text;
+      return null;
     }
 
+    // ❌ MyMemory sometimes echoes original text
+    if (translated.trim() === text.trim()) {
+      return null;
+    }
 
-    return response.data.responseData.translatedText;
-
+    return translated;
   } catch (error) {
     console.log("MyMemory Error:", error.message);
     return null;
