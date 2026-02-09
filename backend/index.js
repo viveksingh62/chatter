@@ -20,16 +20,17 @@ const translateText = require("./utils/translate.js");
 const User = require("./models/userModel.js");
 const redisClient = require("./config/redisClient.js");
 // const { useId } = require("react");
+
 app.use(
   cors({
-    origin:  process.env.CLIENT_URL,
+    origin:  [process.env.CLIENT_URL,  "http://localhost:5173"],
         credentials: true,
   }),
 );
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin:   process.env.CLIENT_URL,
+    origin:  [ process.env.CLIENT_URL, "http://localhost:5173"],
         credentials: true,
   },
 });
