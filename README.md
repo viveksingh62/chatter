@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="./frontend//src/assets/Vocal.png" alt="vocahat Logo" width="120" />
+  <img src="./frontend/src/assets/chatlogo.png" alt="vocahat Logo" width="120" />
 </p>
 
 <h1 align="center"> VocaChat </h1>
@@ -25,9 +25,18 @@ The system is designed with a strong focus on **low latency**, **scalability**, 
 
 ## 🎥 Demo Video
 
-> 📌 Demo showcasing real-time chat and live translation
+> 📌 Click to Watch Demo showcasing real-time chat and live translation
 
-[![VocaChat Demo](https://img.youtube.com/vi/GmMqWdp7G9c/0.jpg)](https://youtu.be/GmMqWdp7G9c)
+## 🎥 Demo Video
+
+<p align="center">
+  <a href="https://youtu.be/GmMqWdp7G9c">
+    <img src="https://img.youtube.com/vi/GmMqWdp7G9c/0.jpg" alt="VocaChat Demo Video" width="600"/>
+        <br/>
+    ▶️ Watch Demo on YouTube
+  </a>
+</p>
+
 
 ---
 
@@ -94,12 +103,10 @@ The system is designed with a strong focus on **low latency**, **scalability**, 
 git clone https://github.com/viveksingh62/chatter.git
 cd chatter
 
-Setup Backend
 
 cd backend
 npm install
 
-Create a .env file inside backend/:
 
 PORT=8080
 MONGO_URI=your_mongodb_connection_string
@@ -111,7 +118,6 @@ CLIENT_URL=http://localhost:5173
 
 node index.js
 
-Setup Frontend
 
 cd frontend
 npm install
