@@ -1,0 +1,136 @@
+
+<p align="center">
+  <img src="./frontend//src/assets/Vocal.png" alt="vocahat Logo" width="120" />
+</p>
+
+<h1 align="center"> VocaChat </h1>
+
+<p align="center">
+  A real-time multilingual chat application built with the MERN stack, Socket.io, and Redis
+</p>
+
+<p align="center">
+  <b>Live Translation • Real-time Messaging • Scalable Architecture</b>
+</p>
+
+---
+
+## 📖 About the Project
+
+**VocaChat** is a **real-time multilingual chat application** that allows users to communicate instantly with **live message translation** across different languages.
+
+The system is designed with a strong focus on **low latency**, **scalability**, and **smooth real-time user experience**, making it suitable for modern real-time applications.
+
+---
+
+## 🎥 Demo Video
+
+> 📌 Demo showcasing real-time chat and live translation
+
+[![VocaChat Demo](https://img.youtube.com/vi/GmMqWdp7G9c/0.jpg)](https://youtu.be/GmMqWdp7G9c)
+
+---
+
+## 📸 Screenshots
+
+> 📌 UI previews from the application
+
+### 🔐 Login & 💬 Chat Interface
+<p align="center">
+  <img src="./frontend/src/assets/login.png" width="45%" />
+  <img src="./frontend/src/assets/chat.png" width="45%" />
+</p>
+
+### 🌍 Language Selection
+<p align="center">
+  <img src="./frontend/src/assets/language.png" width="45%" />
+</p>
+
+---
+
+## 🚀 Features
+
+- 🌐 **Real-time Messaging** using Socket.io
+- 🌍 **Live Message Translation** between users
+- 🔐 **Authentication** (JWT / Google OAuth)
+- 👤 **One-to-One Chat System**
+- 🟢 **Online / Offline User Presence**
+- ⌨️ **Typing Indicator**
+- 🕒 **Message Timestamps**
+- ⚡ **Redis-powered Caching & Socket State Management**
+- 📱 **Fully Responsive UI**
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React
+- CSS / Tailwind CSS
+- Socket.io-client
+
+### Backend
+- Node.js
+- Express.js
+- Socket.io
+- MongoDB + Mongoose
+- Redis (Upstash)
+- JWT Authentication
+- Open-source Translation API
+
+### Deployment
+- Frontend: Vercel
+- Backend: Render
+- Database: MongoDB Atlas
+- Cache Store: Redis
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/viveksingh62/chatter.git
+cd chatter
+
+Setup Backend
+
+cd backend
+npm install
+
+Create a .env file inside backend/:
+
+PORT=8080
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+REDIS_URL=your_redis_url
+TRANSLATION_API_KEY=your_translation_api_key
+CLIENT_URL=http://localhost:5173
+
+
+node index.js
+
+Setup Frontend
+
+cd frontend
+npm install
+
+VITE_BACKEND_URL=http://localhost:8080
+
+npm run dev
+
+
+🧠 Challenges & Learnings
+
+Built scalable real-time communication using Socket.io
+
+Integrated live translation into active chat streams
+
+Used Redis to optimize socket events and state handling
+
+Handled authentication, cookies, and CORS in production
+
+Improved system design for real-time MERN applications
+
+Developed by Vivek Singh ✨
